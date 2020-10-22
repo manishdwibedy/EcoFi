@@ -28,7 +28,7 @@ function initAddress() {
             document.querySelector('#from').value = accounts[0];
         }
         else{
-            document.querySelector('#from').value = "Please connect your metamask wallet!";
+            document.querySelector('#from').value = "";
         }
         
         document.getElementById('result').innerText = 100;
