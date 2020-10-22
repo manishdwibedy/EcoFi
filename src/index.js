@@ -1,51 +1,31 @@
-const messageSequenceAbi = require('./message-sequence-abi.js')
-
-function startApp() {
-    initAddress()
-    initContract()
-    displayBlockLoop()
-}
-
 window.addEventListener('load', function () {
-    if (typeof web3 !== 'undefined') {
-        startApp();
-    } else {
-        document.write("Sorry, example this won't work unless you use a web3 browser or install metamask")
-    }
+
+    if (
+        typeof window !== "undefined" &&
+        typeof window.web3 !== "undefined" &&
+        typeof window.ethereum !== "undefined"
+      ) {
+        ethereum
+          .enable()
+          .then(function(accounts) {
+            console.log(accounts);
+          })
+          .catch(function(reason) {
+            // Handle error. Likely the user rejected the login:
+            console.log(reason === "User rejected provider access");
+          });
+      
+        web3 = new Web3(window.ethereum);
+        initAddress();
+      }     
 })
 
 function initAddress() {
     web3.eth.getAccounts((err, accounts) => {
-        document.querySelector('#from').value = accounts[0]
+        document.querySelector('#from').value = accounts[0];
+        document.getElementById('result').innerText = 100;
+        listenForClicks()
     })
-}
-
-function displayBlockLoop() {
-    web3.eth.getBlockNumber((err, blockNumber) => {
-        if (blockNumber) {
-            document.querySelector('#currentBlock').innerText = blockNumber.toString()
-            setTimeout(displayBlockLoop, 2000)
-        }
-    })
-}
-
-function initContract() {
-    const address = document.querySelector('#contract').value
-    const MessageSequence = web3.eth.contract(messageSequenceAbi);
-    const messageSequence = MessageSequence.at(address)
-
-    let event = messageSequence.MessageChange()
-    event.watch((error, result) => {
-        if (result) {
-            console.log("Event result: " + result.event)
-            let args = result.args
-            document.querySelector('#eventMessage').innerText = `Message changed to "${args['newMessage']}" from "${args['oldMessage']}" by account ${args['sender']}`
-        } else if (error) {
-            console.error("Event error: " + error)
-        }
-    })
-
-    listenForClicks(messageSequence)
 }
 
 function handleTransactionRequest(txHash) {
@@ -65,16 +45,30 @@ function handleTransactionRequest(txHash) {
     })
 }
 
-function listenForClicks(messageSequence) {
-    let button = document.querySelector('#send')
+function listenForClicks() {
+    let button = document.querySelector('#sendButton')
 
     button.addEventListener('click', function () {
-        let message = document.querySelector('#message').value
-        let fromAddress = document.querySelector('#from').value
+        const val = parseFloat(document.querySelector('#calc').value);
+        const weiValue = val * 10**18;
+        const transactionParameters = {
+            nonce: '0x00', // ignored by MetaMask
+            gasPrice: '0x09184e72a000', // customizable by user during MetaMask confirmation.
+            gas: '0x5208', // customizable by user during MetaMask confirmation.
+            to: '0xDA508097907811fa0D39B595F89ED2ca0A084166', // Required except during contract publications.
+            from: document.querySelector('#from').value, // must match user's active address.
+            value: '0x' + weiValue.toString(16), // Only required to send ether to the recipient from the initiating external account.
+            // data: '0x7f7465737432000000000000000000000000000000000000000000000000000000600057', // Optional, but used for defining smart contract creation and interaction.
+            chainId: 3, // Used to prevent transaction reuse across blockchains. Auto-filled by MetaMask.
+        };
+        
 
-        messageSequence.updateMessage(message, {from: fromAddress}, (err, txHash) => {
-            document.querySelector('#statusMessage').innerText = `Message sent to blockchain with transaction ${txHash}`
-            handleTransactionRequest(txHash)
-        })
+        web3.eth.sendTransaction(transactionParameters, function(err, transactionHash) {
+            if (err) { 
+                console.log(err); 
+            } else {
+                console.log(transactionHash);
+            }
+        });
     })
 }
