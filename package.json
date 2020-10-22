@@ -6,6 +6,7 @@
   "engines": {
     "node": "12.x"
   },
+  
   "scripts": {
     "browserify": "browserify src/index.js -s 'UserInput'",
     "build": "mkdir -p build/ && npm run browserify -- --debug -o build/metamask-hello-world.js",
