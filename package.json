@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "description": "Hello world example for etherium blockchain interaction.",
   "main": "main.js",
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "browserify": "browserify src/index.js -s 'UserInput'",
     "build": "npm run browserify -- --debug -o build/metamask-hello-world.js",
-    "dev": "npm run build && node ./scripts/budo",
-    "dist": "npm run browserify -s -- --debug | exorcist dist/metamask-hello-world.js.map > dist/metamask-hello-world.js && uglifyjs dist/metamask-hello-world.js -c warnings=false -m -o dist/metamask-hello-world.min.js",
+    "dev": "mkdir build/ && npm run build && node ./scripts/budo",
+    "dist": "mkdir dist/ &&npm run browserify -s -- --debug | exorcist dist/metamask-hello-world.js.map > dist/metamask-hello-world.js && uglifyjs dist/metamask-hello-world.js -c warnings=false -m -o dist/metamask-hello-world.min.js",
     "test": "karma start ./tests/karma.conf.js",
     "integration-test": "truffle compile && truffle migrate && truffle test"
   },
