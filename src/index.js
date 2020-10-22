@@ -8,7 +8,9 @@ window.addEventListener('load', function () {
         ethereum
           .enable()
           .then(function(accounts) {
-            console.log(accounts);
+            if (accounts.length > 0){
+                document.querySelector('#from').value = accounts[0];
+            }
           })
           .catch(function(reason) {
             // Handle error. Likely the user rejected the login:
@@ -22,7 +24,13 @@ window.addEventListener('load', function () {
 
 function initAddress() {
     web3.eth.getAccounts((err, accounts) => {
-        document.querySelector('#from').value = accounts[0];
+        if (accounts.length > 0){
+            document.querySelector('#from').value = accounts[0];
+        }
+        else{
+            document.querySelector('#from').value = "Please connect your metamask wallet!";
+        }
+        
         document.getElementById('result').innerText = 100;
         listenForClicks()
     })
