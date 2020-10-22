@@ -8,9 +8,9 @@
   },
   "scripts": {
     "browserify": "browserify src/index.js -s 'UserInput'",
-    "build": "mkdir build/ && npm run browserify -- --debug -o build/metamask-hello-world.js",
-    "dev": "mkdir build/ && npm run build && node ./scripts/budo",
-    "dist": "mkdir dist/ &&npm run browserify -s -- --debug | exorcist dist/metamask-hello-world.js.map > dist/metamask-hello-world.js && uglifyjs dist/metamask-hello-world.js -c warnings=false -m -o dist/metamask-hello-world.min.js",
+    "build": "mkdir -p build/ && npm run browserify -- --debug -o build/metamask-hello-world.js",
+    "dev": "mkdir -p build/ && npm run build && node ./scripts/budo",
+    "dist": "mkdir -p dist/ &&npm run browserify -s -- --debug | exorcist dist/metamask-hello-world.js.map > dist/metamask-hello-world.js && uglifyjs dist/metamask-hello-world.js -c warnings=false -m -o dist/metamask-hello-world.min.js",
     "test": "karma start ./tests/karma.conf.js",
     "integration-test": "truffle compile && truffle migrate && truffle test"
   },
