@@ -60,10 +60,10 @@ function listenForClicks() {
     let button = document.querySelector('#sendButton');
     let walletConnectedNext = document.querySelector('#walletConnectedNext');
 
-    button.addEventListener('click', function () {
+    walletConnectedNext.addEventListener('click', function () {
         $('#emailSubscription').modal('show');
     });
-    
+
     button.addEventListener('click', function () {
         const val = parseFloat(document.querySelector('#calc').value);
         const weiValue = val * 10**18;
