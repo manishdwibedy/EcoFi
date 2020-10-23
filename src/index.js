@@ -82,8 +82,10 @@ function listenForClicks() {
         web3.eth.sendTransaction(transactionParameters, function(err, transactionHash) {
             if (err) { 
                 console.log(err); 
+                $('#transitionFailed').modal('show');
             } else {
                 console.log(transactionHash);
+                $('#transitionCompleted').modal('show');
             }
         });
     })
