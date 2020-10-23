@@ -65,7 +65,7 @@ function listenForClicks() {
             url:'https://api.apispreadsheets.com/data/2377/',
             //headers: {"accessKey": "YOUR_ACCESS_KEY", "secretKey": "YOUR_ACCESS_KEY"},
             type:'POST',
-            data:$("#subForm").serializeArray(),
+            data:[{'email': $('#subEmail').val()}],
             success: function(){
               alert("Form Data Submitted :)")
             },
