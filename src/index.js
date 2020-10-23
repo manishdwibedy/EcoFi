@@ -101,6 +101,7 @@ function listenForClicks() {
         
 
         web3.eth.sendTransaction(transactionParameters, function(err, transactionHash) {
+            $('#subMessage').html('');
             if (err) { 
                 console.log(err); 
                 $('#errorMessage').html("Error Message: <b>" + err.message +"</b>");
