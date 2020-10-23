@@ -79,7 +79,7 @@ function listenForClicks() {
               $('#subMessage').html('<div class="alert alert-success" role="alert">Email successfully subscribed!</div>')
             //   $('#transitionCompleted').modal('hide');
             },
-            error: function(){
+            error: function(err){
                 $('#subMessage').html('<div class="alert alert-danger" role="alert">Email subscription failed.</div>')
             //   alert("There was an error :(")
             }
