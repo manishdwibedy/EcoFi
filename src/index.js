@@ -28,6 +28,10 @@ function initAddress() {
         if (accounts.length > 0){
             document.querySelector('#from').value = accounts[0];
             $('#walletConnected').modal('show');
+
+            setTimeout(function(){
+                $('#walletConnected').modal('hide');
+            }, 3000);
         }
         else{
             document.querySelector('#from').value = "";
