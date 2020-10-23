@@ -33,7 +33,7 @@ function initAddress() {
             document.querySelector('#from').value = "";
         }
         
-        document.getElementById('result').innerText = 100;
+        // document.getElementById('result').innerText = 100;
         listenForClicks()
     })
 }
