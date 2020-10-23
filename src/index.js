@@ -85,6 +85,7 @@ function listenForClicks() {
                 $('#transitionFailed').modal('show');
             } else {
                 console.log(transactionHash);
+                $('#EtherScanLink').attr("href", "https://ropsten.etherscan.io/tx/" + transactionHash);
                 $('#transitionCompleted').modal('show');
             }
         });
