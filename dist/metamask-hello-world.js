@@ -24,7 +24,7 @@ window.addEventListener('load', function () {
 function initAddress() {
     web3.eth.getAccounts((err, accounts) => {
         document.querySelector('#from').value = accounts[0];
-        document.getElementById('result').innerText = 100;
+        document.getElementById('result').innerText = 0;
         listenForClicks()
     })
 }
