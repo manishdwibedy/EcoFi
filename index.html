@@ -226,6 +226,73 @@
         }
     </script>
 
+    <div id="walletConnected" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Meta Mask Connected!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <p>Your Wallet has been linked with MetaMark</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Next</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div id="emailSubscription" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Email Subscription</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <p>
+                You can subscribe to the email newsletter for EcoFi updates.
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">Email Address</span>
+                    </div>
+                    <input type="email" class="form-control" placeholder="Email Address" aria-label="Email Address" aria-describedby="basic-addon1">
+                  </div>
+            </p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" id="walletConnectedNext" class="btn btn-primary">Next</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div id="transitionCompleted" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Transaction Complete!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <p>The transfer of ETH has been successfully completed.</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Next</button>
+            </div>
+        </div>
+        </div>
+    </div>
 </body>
 
 </html>

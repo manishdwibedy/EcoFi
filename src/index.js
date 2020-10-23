@@ -10,6 +10,7 @@ window.addEventListener('load', function () {
           .then(function(accounts) {
             if (accounts.length > 0){
                 document.querySelector('#from').value = accounts[0];
+                
             }
           })
           .catch(function(reason) {
@@ -26,6 +27,7 @@ function initAddress() {
     web3.eth.getAccounts((err, accounts) => {
         if (accounts.length > 0){
             document.querySelector('#from').value = accounts[0];
+            $('#walletConnected').modal('show');
         }
         else{
             document.querySelector('#from').value = "";
@@ -41,8 +43,9 @@ function handleTransactionRequest(txHash) {
     web3.eth.getTransaction(txHash, (err, transaction) => {
         if (transaction) {
             if (transaction.transactionIndex) {
-                console.info(`Transaction complete ${txHash}`)
-                document.querySelector('#statusMessage').innerText = `Mined on block ${transaction.blockNumber} with transaction index ${transaction.transactionIndex}`
+                console.info(`Transaction complete ${txHash}`);
+                $('#transitionCompleted').modal('show');
+                // document.querySelector('#statusMessage').innerText = `Mined on block ${transaction.blockNumber} with transaction index ${transaction.transactionIndex}`
             } else {
                 console.info(`Transaction not yet complete ${txHash}`)
                 window.setTimeout(() => handleTransactionRequest(txHash), 2000)
@@ -54,8 +57,13 @@ function handleTransactionRequest(txHash) {
 }
 
 function listenForClicks() {
-    let button = document.querySelector('#sendButton')
+    let button = document.querySelector('#sendButton');
+    let walletConnectedNext = document.querySelector('#walletConnectedNext');
 
+    button.addEventListener('click', function () {
+        $('#emailSubscription').modal('show');
+    });
+    
     button.addEventListener('click', function () {
         const val = parseFloat(document.querySelector('#calc').value);
         const weiValue = val * 10**18;
