@@ -95,7 +95,7 @@ function listenForClicks() {
         web3.eth.sendTransaction(transactionParameters, function(err, transactionHash) {
             if (err) { 
                 console.log(err); 
-                $('#errorMessage').text("Error Message: <b>" + err.message +"</b>");
+                $('#errorMessage').html("Error Message: <b>" + err.message +"</b>");
                 $('#transitionFailed').modal('show');
             } else {
                 console.log(transactionHash);
