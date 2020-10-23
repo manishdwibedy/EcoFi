@@ -58,11 +58,11 @@ function handleTransactionRequest(txHash) {
 
 function listenForClicks() {
     let button = document.querySelector('#sendButton');
-    let walletConnectedNext = document.querySelector('#walletConnectedNext');
+    // let walletConnectedNext = document.querySelector('#walletConnectedNext');
 
-    walletConnectedNext.addEventListener('click', function () {
-        $('#emailSubscription').modal('show');
-    });
+    // walletConnectedNext.addEventListener('click', function () {
+    //     $('#emailSubscription').modal('show');
+    // });
 
     button.addEventListener('click', function () {
         const val = parseFloat(document.querySelector('#calc').value);
