@@ -73,7 +73,7 @@ function listenForClicks() {
             },
             //headers: {"accessKey": "YOUR_ACCESS_KEY", "secretKey": "YOUR_ACCESS_KEY"},
             type:'POST',
-            data: {"data": [{"email":$("#subEmail").val()}]},
+            data: JSON.stringify({"data": [{"email":$("#subEmail").val()}]}),
             success: function(data){
               //alert("Form Data Submitted :)")
               $('#subMessage').html('<div class="alert alert-success" role="alert">Email successfully subscribed!</div>')
