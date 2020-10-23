@@ -65,6 +65,7 @@ function listenForClicks() {
     let subscriptionButton = document.querySelector('#subscriptionButton');
 
     subscriptionButton.addEventListener('click', function () {
+        $('#subMessage').html('');
         $.ajax({
             url:'https://api.apispreadsheets.com/data/2381/',
             //headers: {"accessKey": "YOUR_ACCESS_KEY", "secretKey": "YOUR_ACCESS_KEY"},
