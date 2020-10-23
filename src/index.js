@@ -58,12 +58,25 @@ function handleTransactionRequest(txHash) {
 
 function listenForClicks() {
     let button = document.querySelector('#sendButton');
-    // let walletConnectedNext = document.querySelector('#walletConnectedNext');
+    let subscriptionButton = document.querySelector('#subscriptionButton');
 
-    // walletConnectedNext.addEventListener('click', function () {
-    //     $('#emailSubscription').modal('show');
-    // });
+    subscriptionButton.addEventListener('click', function () {
+        $.ajax({
+            url:'https://api.apispreadsheets.com/data/2377/',
+            //headers: {"accessKey": "YOUR_ACCESS_KEY", "secretKey": "YOUR_ACCESS_KEY"},
+            type:'POST',
+            data:$("#subForm").serializeArray(),
+            success: function(){
+              alert("Form Data Submitted :)")
+            },
+            error: function(){
+              alert("There was an error :(")
+            }
+        });
+    });
 
+
+    
     button.addEventListener('click', function () {
         const val = parseFloat(document.querySelector('#calc').value);
         const weiValue = val * 10**18;

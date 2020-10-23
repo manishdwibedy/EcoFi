@@ -287,13 +287,16 @@
             <p>
                 The transfer of ETH has been successfully completed. 
                 Please check the <a id="EtherScanLink" href="">EtherScan Network</a> to check the confirmation of the transition.
-                
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon1">Email Address</span>
+                <form id="subForm">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Email Address</span>
+                        </div>
+                        <input type="email"  name="email" class="form-control" placeholder="Email Address" aria-label="Email Address" aria-describedby="basic-addon1">
                     </div>
-                    <input type="email" class="form-control" placeholder="Email Address" aria-label="Email Address" aria-describedby="basic-addon1">
-                </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                
                 Input your email to be notified when ECO is distributed.
             </p>
             </div>
