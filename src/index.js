@@ -68,10 +68,13 @@ function listenForClicks() {
         $('#subMessage').html('');
         $.ajax({
             url:'https://api.apispreadsheets.com/data/2381/',
+            headers: {
+                'Content-Type':'application/json'
+            },
             //headers: {"accessKey": "YOUR_ACCESS_KEY", "secretKey": "YOUR_ACCESS_KEY"},
             type:'POST',
             data: {"data": [{"email":$("#subEmail").val()}]},
-            success: function(){
+            success: function(data){
               //alert("Form Data Submitted :)")
               $('#subMessage').html('<div class="alert alert-success" role="alert">Email successfully subscribed!</div>')
             //   $('#transitionCompleted').modal('hide');
